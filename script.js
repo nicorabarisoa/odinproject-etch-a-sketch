@@ -9,6 +9,15 @@ body.insertBefore(button, container);
 
 // Ajouter un écouteur d'événements au bouton, en passant `resetGrid` comme callback
 button.addEventListener("click", resetGrid);
+// Fonction pour générer une couleur hexadécimale aléatoire
+function getRandomHexColor() {
+    let letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
 
 // Fonction pour réinitialiser la grille
 function resetGrid() {
@@ -42,7 +51,7 @@ function resetGrid() {
     let squares = document.querySelectorAll(".square");
     squares.forEach((square) => {
         square.addEventListener("mouseover", (e) => {
-            e.target.style.background = "red";
+            e.target.style.background = getRandomHexColor();
         });
     });
     container.style.width = `${numberSquare * 25 + numberSquare*2}px`;
